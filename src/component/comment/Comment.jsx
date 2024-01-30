@@ -1,11 +1,13 @@
 import React from 'react'
-import Button from '../Button'
+import AddComment from './AddComment'
 
 function Comment() {
   return (<>
+    <div>
+      <AddComment>
 
-
-    <div>Comment</div>
+      </AddComment>
+    </div>
 
 
 
