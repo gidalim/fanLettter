@@ -1,20 +1,28 @@
 import React from 'react'
-import Navigation from './Navigation'
+import styled from 'styled-components'
 
 function Header(content) {
   return (
     <>
-      <header className='headerSrc' >
+      <Stheader className='headerSrc' >
         <div>팬레터 제작하기</div>
         <div>React_4기 박강토</div>
 
 
-      </header>
+      </Stheader>
 
 
       {content.children}
     </>
   )
 }
+
+const Stheader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  width: 1100px;
+  
+  `
+
 
 export default Header

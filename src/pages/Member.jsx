@@ -1,13 +1,12 @@
-import React from 'react'
 import Main from '../component/Main'
 
-function Karina() {
+
+function Member() {
   return (
     <div>
       <Main />
-
     </div>
   )
 }
 
-export default Karina
+export default Member

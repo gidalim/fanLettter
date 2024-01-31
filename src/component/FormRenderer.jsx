@@ -1,62 +1,100 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 
+
+
 const FormRenderer = ({ list }) => {
-  console.log('리스트가 전달되었음', list)
+
+  const navigate = useNavigate();
+  const chaseFanLetter = (item) => {
+
+    navigate(`/member/${item.selectedPage}`)
+  }
+
 
   return list.map(item => (
-    <StBox key={item.id} className='innerBox'>
-      <Link to={`/${item.id}`}>
-        <div className='StComment'>
+    <StBox key={item.id}
+      className='innerBox'
+      onClick={() => chaseFanLetter(item.selectedPage)}
+    >
+      <StCommentBox className='StCommentBox'>
+        <StImg>
           <img src={item.profile} alt={item.name} />
-          <StUl>
-            <li>{item.name}</li>
-            <li>{item.time}</li>
-            <li>{item.content}</li>
-          </StUl>
-        </div>
-      </Link>
+        </StImg>
+        <StProfile>
+          <span>{item.name}</span>
+          <time dateTime={item.time}>{new Date(item.time).toLocaleString()}</time>
+        </StProfile>
+      </StCommentBox>
+      <StP>{item.content}</StP>
     </StBox >
   ))
 };
 
-const StBox = styled.div`
+export const StCommentBox = styled.section`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 480px;
+  height: 60px;
+  margin-bottom: 15px;
+`
+export const StBox = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 1100px;
+  height: 120px;
   border: 1px solid black;
   color: black;
-  padding: 30px;
+  border-radius: 5px;
+  padding: 10px;
 
-  &.loadBox {
+  &.innerBox {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: 300px;
-    border: 1px solid black;
+    width: 480px;
+    min-height: 100px;
     margin: 15px;
-  }
-
-  &.innerBox{
-    display: flex;
-    flex-direction: row;
-    width: 300px;
-    margin: 25px;
 
   }
-
-  &.StComment{
-    display: flex;
-    flex-direction: row;
-  }
+`
+export const StP = styled.p`
+  display: flex;
+  align-items: center;
+  width: 380px;
+  height: 30px;
+  padding: 5px;
+  margin-left: 70px;
+  border: 1px transparent;
+  border-radius: 5px;
+  background-color: palegreen;
 
 `
-const StUl = styled.ul`
+
+
+export const StImg = styled.figure`
+  width: 60px;
+  height: 60px;
+  margin-right: 25px;
+  border-radius: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+`
+
+
+export const StProfile = styled.div`
   display: flex;
+  height: 50px;
   flex-direction: column;
+  justify-content: space-around;
 `
 
 
