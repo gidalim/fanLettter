@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 
 
-const FormRenderer = ({ list }) => {
+const FormRenderer = ({ filteredList }) => {
+  console.log('폼 생성용 데이터가 전송 되었는지', filteredList)
 
   const navigate = useNavigate();
   const chaseFanLetter = (item) => {
@@ -12,7 +13,7 @@ const FormRenderer = ({ list }) => {
     console.log(item.id)
   }
 
-  return list.map(item => (
+  return filteredList.map(item => (
     <StBox key={item.id}
       className='innerBox'
       onClick={() => chaseFanLetter(item)}

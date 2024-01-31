@@ -1,18 +1,29 @@
 import { useParams, useNavigate } from "react-router-dom"
-import data from '../shared/data.json';
 import styled from "styled-components";
 import Button from "../component/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DetailComment from "../component/comment/DetailComment";
 
 
-function Detail() {
+function Detail({ list, deleteLetter, updateLetter }) {
 
+
+  console.log('디테일에서 받아오는 정보', list)
   const { id } = useParams();
   const navigate = useNavigate();
-  const [fanLetter, setFanLetter] = useState(data.find(item => item.id === id));
-  const [content, setContent] = useState(fanLetter ? fanLetter.content : '');
+
+  const [fanLetter, setFanLetter] = useState(null);
+  const [content, setContent] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const letter = list.find(item => item.id === id);
+    if (letter) {
+      setFanLetter(letter)
+      setContent(letter.content)
+    }
+  }, [id, list])
+
 
 
   const callModal = () => {
@@ -31,7 +42,7 @@ function Detail() {
   }
 
   const deletedHandler = () => {
-
+    deleteLetter(fanLetter.id)
     navigate('/member');
   }
 

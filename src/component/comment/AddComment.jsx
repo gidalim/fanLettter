@@ -6,7 +6,7 @@ import profile from '../../assets/profile.png';
 import styled from 'styled-components';
 
 
-function AddComment(comment) {
+function AddComment({ onSubmit }) {
 
 
   const [name, setName] = useState('');
@@ -40,7 +40,8 @@ function AddComment(comment) {
     };
     setName('')
     setContent('')
-    comment.onSubmit(addComment)
+    console.log('입력받은 새로운 데이터 추가', addComment);
+    onSubmit(addComment)
     window.alert('팬레터를 발송했습니다!')
   }
 

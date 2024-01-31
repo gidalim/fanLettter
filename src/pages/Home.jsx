@@ -1,35 +1,37 @@
 import styled from 'styled-components'
-import Button from './Button'
-import { useState, } from 'react';
-import AddComment from './comment/AddComment';
-import FormRenderer from './comment/FormRenderer';
-import data from '../shared/data.json';
+import { useState, useEffect } from 'react';
+import Button from '../component/Button';
+import AddComment from '../component/comment/AddComment';
+import FormRenderer from '../component/comment/FormRenderer';
 
 
 
-function Header() {
 
-  const [initialState] = useState([...data])
-  const [list, setList] = useState([]);
-  const [filteredData, setFilteredData] = useState([...data]);
+function Home({ addedFanLetter, list }) {
+
+  const [filteredData, setFilteredData] = useState([...list]);
+  const [seletedBtn, setSeletedBtn] = useState('karina');
+
+  useEffect(() => {
+    setFilteredData(list.filter(item => item.selectedPage === 'karina'));
+  }, [list]);
+
+  // useEffect 안쓰면 데이터가 추가가 안됨
+
+
+
 
   const addFanLetter = (item) => {
-    const updatedList = ([...list, item]);
-    setList(updatedList);
-    setFilteredData([...initialState, ...updatedList]);
+    addedFanLetter(item);
+
   };
 
 
-
   const filteredFanLetter = (selectedPage) => {
-    const fanLetterData = [...initialState, ...list]
-
-    const newFilteredData = selectedPage
-      ? fanLetterData.filter((item) => item.selectedPage === selectedPage)
-      : fanLetterData;
-    console.log(filteredData)
-
+    const fanLetterData = [...list]
+    const newFilteredData = fanLetterData.filter((item) => item.selectedPage === selectedPage)
     setFilteredData(newFilteredData)
+    setSeletedBtn(selectedPage)
   }
 
 
@@ -38,16 +40,16 @@ function Header() {
     <>
       <StHeader>
         <StName>
-
-
           <div>팬레터 제작하기</div>
           <div>React_4기 박강토</div>
         </StName>
 
         <StMember>
-          <Button clickEventHandler={() => {
-            filteredFanLetter('karina');
-          }}>카리나</Button>
+          <Button
+            isActive={seletedBtn === 'karina'}
+            clickEventHandler={() => {
+              filteredFanLetter('karina');
+            }}>카리나</Button>
           <Button clickEventHandler={() => {
             filteredFanLetter('giselle');
           }}>지젤</Button>
@@ -65,12 +67,11 @@ function Header() {
           onSubmit={addFanLetter}
         />
       </StBox>
-
       <StMain className='loadBox'>
         박스가 나올 위치
         <StUl>
           <FormRenderer
-            list={filteredData}
+            filteredList={filteredData}
           />
         </StUl>
       </StMain >
@@ -132,4 +133,4 @@ const StUl = styled.ul`
 
 
 
-export default Header
+export default Home
