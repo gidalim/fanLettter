@@ -1,15 +1,37 @@
 import styled from 'styled-components'
 import Button from './Button'
+import { useState, } from 'react';
+import AddComment from './comment/AddComment';
+import FormRenderer from './comment/FormRenderer';
+import data from '../shared/data.json';
 
 
 
-function Header({ filterFnc }) {
+function Header() {
+
+  const [initialState] = useState([...data])
+  const [list, setList] = useState([]);
+  const [filteredData, setFilteredData] = useState([...data]);
+
+  const addFanLetter = (item) => {
+    const updatedList = ([...list, item]);
+    setList(updatedList);
+    setFilteredData([...initialState, ...updatedList]);
+  };
 
 
 
   const filteredFanLetter = (selectedPage) => {
-    filterFnc(selectedPage);
+    const fanLetterData = [...initialState, ...list]
+
+    const newFilteredData = selectedPage
+      ? fanLetterData.filter((item) => item.selectedPage === selectedPage)
+      : fanLetterData;
+    console.log(filteredData)
+
+    setFilteredData(newFilteredData)
   }
+
 
 
   return (
@@ -37,6 +59,22 @@ function Header({ filterFnc }) {
           }}>닝닝</Button>
         </StMember>
       </StHeader>
+
+      <StBox className='createBox'>
+        <AddComment
+          onSubmit={addFanLetter}
+        />
+      </StBox>
+
+      <StMain className='loadBox'>
+        박스가 나올 위치
+        <StUl>
+          <FormRenderer
+            list={filteredData}
+          />
+        </StUl>
+      </StMain >
+
 
     </>
   )
@@ -68,6 +106,30 @@ const StMember = styled.h1`
   gap: 15px;
   padding-bottom: 15px;
 `
+
+const StMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1100px;
+  height: auto;
+  border: 1px solid black;
+  color: black;
+`
+
+const StBox = styled.form`
+  display: flex;
+  width: 1100px;
+  justify-content: center;
+  margin-bottom: 2rem;
+`
+const StUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6c0;
+`
+
 
 
 export default Header

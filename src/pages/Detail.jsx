@@ -2,13 +2,40 @@ import { useParams, useNavigate } from "react-router-dom"
 import data from '../shared/data.json';
 import styled from "styled-components";
 import Button from "../component/Button";
+import { useState } from "react";
+import DetailComment from "../component/comment/DetailComment";
+
 
 function Detail() {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const [fanLetter, setFanLetter] = useState(data.find(item => item.id === id));
+  const [content, setContent] = useState(fanLetter ? fanLetter.content : '');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fanLetter = data.find(item => item.id === id)
+
+  const callModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const offModal = () => {
+    setContent(fanLetter.content);
+    setIsModalOpen(false);
+  }
+
+  const changedHandler = () => {
+    setFanLetter({ ...fanLetter, content: content });
+    // navigate('/member');
+    offModal();
+  }
+
+  const deletedHandler = () => {
+
+    navigate('/member');
+  }
+
+
 
   return (
     <div>
@@ -30,7 +57,17 @@ function Detail() {
           </StFanLetterBox>
           <StAddress>to.{fanLetter.selectedPage}</StAddress>
           <StP>{fanLetter.content}</StP>
-          <div> 버튼이 들어갈 공간입니다</div>
+          <div>
+            <Button clickEventHandler={deletedHandler} >삭제</Button>
+            <Button clickEventHandler={callModal} >수정</Button>
+            <DetailComment
+              isOpen={isModalOpen}
+              onClose={offModal}
+              onSave={changedHandler}
+              content={content}
+              setContent={setContent}
+            />
+          </div>
         </StBox >
       ) : (
         <p>팬레터가 존재하지 않아요!</p>

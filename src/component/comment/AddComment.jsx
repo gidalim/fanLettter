@@ -44,6 +44,7 @@ function AddComment(comment) {
     window.alert('팬레터를 발송했습니다!')
   }
 
+
   return (
     <>
       <StBox className='inputData'>
@@ -59,7 +60,7 @@ function AddComment(comment) {
         </StSection>
         <StSectionComment>
           <StLabel>팬레터:</StLabel>
-          <input type="text"
+          <textarea type="text"
             className='inputContent'
             maxLength={'120'}
             placeholder='팬레터는 최대120자까지 작성이 가능해요.'
@@ -110,9 +111,11 @@ const StSectionComment = styled.section`
   width: 500px;
   height: 230px;
 
-  input{
+  textarea{
+    font-family: inherit;
     width: 400px;
     height: 200px;
+    font-size: 1.3rem;
   }
 `
 const StLabel = styled.label`
