@@ -8,10 +8,8 @@ const FormRenderer = ({ list }) => {
 
   const navigate = useNavigate();
   const chaseFanLetter = (item) => {
-
-    navigate(`/member/${item.selectedPage}`)
+    navigate(`/member/${item}`)
   }
-
 
   return list.map(item => (
     <StBox key={item.id}
@@ -62,15 +60,16 @@ export const StBox = styled.li`
   }
 `
 export const StP = styled.p`
-  display: flex;
-  align-items: center;
   width: 380px;
-  height: 30px;
+  height: 20px;
   padding: 5px;
   margin-left: 70px;
-  border: 1px transparent;
   border-radius: 5px;
   background-color: palegreen;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.4;
 
 `
 

@@ -1,18 +1,20 @@
-import { useState, } from 'react';
+import { useEffect, useState, } from 'react';
 import { styled } from 'styled-components';
 import AddComment from './comment/AddComment';
-import FormRenderer from './FormRenderer';
-// const responseData = async () => {
+import FormRenderer from './comment/FormRenderer';
+import data from '../shared/data.json';
 
+
+
+// {
+//   id: 1, profile: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/36.jpg", name: '김철수', content: '사랑해요', time: '2024-01-29T02:07:09.423Z', selectedPage: '',
+// },
+// {
+//   id: 2, profile: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/298.jpg", name: '김영호', content: '힘내세요', time: '2024-01-29T02:07:09.423Z', selectedPage: '',
 // }
-// json 데이터 가져오는 양식을 공부하고 적을 예정
 
-const initialState = [{
-  id: 1, profile: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/36.jpg", name: '김철수', content: '사랑해요', time: '2024-01-29T02:07:09.423Z', selectedPage: '',
-},
-{
-  id: 2, profile: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/298.jpg", name: '김영호', content: '힘내세요', time: '2024-01-29T02:07:09.423Z', selectedPage: '',
-}]
+
+const initialState = data
 
 
 function Main() {
@@ -20,9 +22,12 @@ function Main() {
   const [list, setList] = useState(initialState);
 
 
+
   const addFanLetter = (item) => {
     setList((list) => [...list, item]);
-    console.log('리스트가 생성되어 전달되었음', item.selectedPage)
+    localStorage.setItem(item.selectedPage, JSON.stringify(item));
+
+    return console.log('리스트가 생성되어 전달되었음', item.selectedPage)
 
   }
 
@@ -69,6 +74,8 @@ const StUl = styled.ul`
   display: flex;
   flex-direction: column;
   background-color: #f6f6c0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 

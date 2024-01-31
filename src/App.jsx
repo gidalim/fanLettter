@@ -1,14 +1,10 @@
-import Header from "./component/Header";
 import Router from "./shared/Router";
 import "./reset.css";
 import styled from "styled-components";
 
 function App() {
   return (<Stcontents>
-
-    <Header>
-      <Router />
-    </Header>
+    <Router />
   </Stcontents>
   );
 }
