@@ -1,5 +1,6 @@
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom"
 import Member from "../pages/Member";
+import Detail from "../pages/Detail";
 
 
 
@@ -9,6 +10,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="member/*" element={<Member />} />
+        <Route path="/member/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   )
@@ -16,9 +18,3 @@ const Router = () => {
 
 export default Router
 
-
-
-// <Route path="KARINA" element={<Karina />} />
-// <Route path="GISELLE" element={<Giselle />} />
-// <Route path="WINTER" element={<Winter />} />
-// <Route path="NINGNING" element={<Ningning />} />

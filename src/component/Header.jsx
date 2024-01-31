@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import Button from './Button'
-import { useState } from 'react'
-import data from '../shared/data.json';
 
 
 

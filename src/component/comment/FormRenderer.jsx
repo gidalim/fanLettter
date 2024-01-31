@@ -8,14 +8,14 @@ const FormRenderer = ({ list }) => {
 
   const navigate = useNavigate();
   const chaseFanLetter = (item) => {
-    navigate(`/member/${item}`)
-    console.log(item)
+    navigate(`/member/${item.id}`)
+    console.log(item.id)
   }
 
   return list.map(item => (
     <StBox key={item.id}
       className='innerBox'
-      onClick={() => chaseFanLetter(item.selectedPage)}
+      onClick={() => chaseFanLetter(item)}
     >
       <StCommentBox className='StCommentBox'>
         <StImg>
