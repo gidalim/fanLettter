@@ -1,15 +1,22 @@
-import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
+import { useState } from 'react'
+import data from '../shared/data.json';
 
-function Header(content) {
 
 
+function Header({ filterFnc }) {
+
+
+
+  const filteredFanLetter = (selectedPage) => {
+    filterFnc(selectedPage);
+  }
 
 
   return (
     <>
-      <Stheader className='headerSrc' >
+      <StHeader>
         <StName>
 
 
@@ -17,28 +24,34 @@ function Header(content) {
           <div>React_4기 박강토</div>
         </StName>
 
-        <h1>
-          <Button></Button>
-          <Button></Button>
-          <Button></Button>
-          <Button></Button>
-        </h1>
-      </Stheader>
+        <StMember>
+          <Button clickEventHandler={() => {
+            filteredFanLetter('karina');
+          }}>카리나</Button>
+          <Button clickEventHandler={() => {
+            filteredFanLetter('giselle');
+          }}>지젤</Button>
+          <Button clickEventHandler={() => {
+            filteredFanLetter('winter');
+          }}>윈터</Button>
+          <Button clickEventHandler={() => {
+            filteredFanLetter('ningning');
+          }}>닝닝</Button>
+        </StMember>
+      </StHeader>
 
-
-      {content.children}
     </>
   )
 }
 
-const Stheader = styled.header`
+const StHeader = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 1100px;
   height: 300px;
-  background-color: #a5c3ff;
+  background-color: #78797e;
   `
 
 const StName = styled.h1`
@@ -49,9 +62,14 @@ const StName = styled.h1`
   background-color: azure;
 `
 
-const StBtn = styled.h1`
+const StMember = styled.h1`
   display: flex;
-  width: 300px;
+  justify-content: space-between;
+  width: 330px;
+  height: 30px;
+  gap: 15px;
+  padding-bottom: 15px;
 `
+
 
 export default Header

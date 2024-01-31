@@ -1,6 +1,5 @@
 import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom"
 import Member from "../pages/Member";
-import Main from "../component/Main";
 
 
 
@@ -9,7 +8,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="Member" element={<Member />} />
+        <Route path="member/*" element={<Member />} />
       </Routes>
     </BrowserRouter>
   )

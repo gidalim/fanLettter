@@ -9,6 +9,7 @@ const FormRenderer = ({ list }) => {
   const navigate = useNavigate();
   const chaseFanLetter = (item) => {
     navigate(`/member/${item}`)
+    console.log(item)
   }
 
   return list.map(item => (

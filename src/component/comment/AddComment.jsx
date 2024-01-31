@@ -11,7 +11,7 @@ function AddComment(comment) {
 
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
-  const [selectedPage, setSelectedPage] = useState('');
+  const [selectedPage, setSelectedPage] = useState('karina');
 
 
   const addName = (e) => {
@@ -127,7 +127,7 @@ const StBox = styled.div`
   align-items: center;
   width: 500px;
   height: 300px;
-  background-color: aquamarine;
+  background-color: #7a4ea0;
   padding: 15px;
 `
 

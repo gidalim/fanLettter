@@ -6,30 +6,21 @@ import data from '../shared/data.json';
 
 
 
-// {
-//   id: 1, profile: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/36.jpg", name: '김철수', content: '사랑해요', time: '2024-01-29T02:07:09.423Z', selectedPage: '',
-// },
-// {
-//   id: 2, profile: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/298.jpg", name: '김영호', content: '힘내세요', time: '2024-01-29T02:07:09.423Z', selectedPage: '',
-// }
+function Main({selectedMember}) {
 
-
-const initialState = data
-
-
-function Main() {
-
-  const [list, setList] = useState(initialState);
-
-
+  const [initialState] = useState([...data])
+  const [list, setList] = useState([]);
 
   const addFanLetter = (item) => {
-    setList((list) => [...list, item]);
-    localStorage.setItem(item.selectedPage, JSON.stringify(item));
+    setList((list)=> [...list, item])
+  };
 
-    return console.log('리스트가 생성되어 전달되었음', item.selectedPage)
 
-  }
+  const fanLetterData = [...initialState, ...list]
+  const filteredData = selectedMember 
+  ? fanLetterData.filter((item)=>item.selectedPage === selectedMember)
+  : fanLetterData;
+
 
   return (
     <>
@@ -43,7 +34,7 @@ function Main() {
         박스가 나올 위치
         <StUl>
           <FormRenderer
-            list={list}
+            list={filteredData}
           />
         </StUl>
       </StMain >
@@ -61,7 +52,6 @@ const StMain = styled.main`
   height: auto;
   border: 1px solid black;
   color: black;
-  padding: 30px;
 `
 
 const StBox = styled.form`
@@ -74,9 +64,33 @@ const StUl = styled.ul`
   display: flex;
   flex-direction: column;
   background-color: #f6f6c0;
-  overflow: hidden;
-  text-overflow: ellipsis;
 `
 
 
 export default Main
+
+
+
+
+// const addFanLetter = async (item) => {
+//   try {
+
+//     const loadData = JSON.parse(localStorage.getItem(item.selectedPage)) || {};
+//     const setData = {
+//       ...loadData,
+//       ...item,
+//     };
+
+//     await new Promise(resolve => {
+//       localStorage.setItem(item.selectedPage, JSON.stringify(setData));
+//       resolve();
+//     })
+//     setList((list) => [...list, setData]);
+//     localStorage.setItem(item.selectedPage, JSON.stringify(item));
+    
+//     console.log('리스트가 생성되어 전달되었음', item.selectedPage)
+
+//   } catch (error) {
+//     console.error('데이터를 가져오는 데 실패했음', error)
+//   }
+// }
