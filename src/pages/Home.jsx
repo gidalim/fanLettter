@@ -22,7 +22,6 @@ function Home({ addedFanLetter, list }) {
 
   const addFanLetter = (item) => {
     addedFanLetter(item);
-
   };
 
 

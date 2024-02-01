@@ -1,19 +1,15 @@
 import Router from "./shared/Router";
-import "./reset.css";
-import styled from "styled-components";
+import GlobalStyle from "./GlobalStyle";
+
 
 function App() {
-  return (<Stcontents>
+  return (<>
+    <GlobalStyle />
     <Router />
-  </Stcontents>
+  </>
   );
 }
 
-const Stcontents = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+
 
 export default App;
