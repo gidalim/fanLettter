@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import Button from '../Button';
 
 
-function DetailComment({ isModalOpen,
+function DetailComment({
+  isModalOpen,
   closeModal,
   changedHandler,
   editContent,

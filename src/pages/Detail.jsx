@@ -1,16 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import Button from "../component/Button";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import DetailComment from "../component/comment/DetailComment";
 import { UserDataContext } from "../context/UserDataContext";
 
-
 function Detail() {
-
-
   const { id } = useParams();
   const navigate = useNavigate();
+
   const { list,
     deleteFanLetter,
     updateFanLetter,
@@ -22,58 +20,48 @@ function Detail() {
     isDivVisible,
   } = useContext(UserDataContext)
 
-  const [fanLetter, setFanLetter] = useState('');
-
-  useEffect(() => {
-    const letter = list.find(item => item.id === id);
-    if (letter) {
-      setFanLetter(letter)
-      setEditContent(letter.content)
-    }
-  }, [id, list, setEditContent])
-
+  const letter = list.find(item => item.id === id);
 
   const callModalHandler = () => {
-    callModal(fanLetter.content);
+    callModal(letter.content);
   };
 
   const changedHandler = () => {
-    const updatedFanLetter = { ...fanLetter, content: editContent }
+    const updatedFanLetter = { ...letter, content: editContent }
     updateFanLetter(updatedFanLetter);
-    navigate('/member');
+    closeModal();
+    navigate('/');
   }
 
   const deletedHandler = () => {
-    deleteFanLetter(fanLetter.id)
-    navigate('/member');
+    deleteFanLetter(letter.id)
+    navigate('/');
   }
-
 
   const goHomeBtn = (e) => {
     closeModal();
-    navigate('/member')
+    navigate('/')
   }
-
 
   return (
     <div>
       <StBtn onClick={goHomeBtn} >집으로</StBtn>
-      {fanLetter ? (
+      {letter ? (
         <StBox>
           <StFanLetterBox>
             <StImg>
-              <img src={fanLetter.profile} alt={fanLetter.name} />
+              <img src={letter.profile} alt={letter.name} />
             </StImg>
             <StFanDetail>
-              <span>{fanLetter.name}</span>
-              <time dateTime={fanLetter.time}>{new Date(fanLetter.time).toLocaleString()}</time>
+              <span>{letter.name}</span>
+              <time dateTime={letter.time}>{new Date(letter.time).toLocaleString()}</time>
             </StFanDetail>
           </StFanLetterBox>
-          <StAddress>to.{fanLetter.selectedPage}</StAddress>
+          <StAddress>to.{letter.selectedPage}</StAddress>
           <StModalDiv
-            isVisible={isDivVisible}
+            $isVisible={isDivVisible}
           >
-            <StP>{fanLetter.content}</StP>
+            <StP>{letter.content}</StP>
             <Button clickEventHandler={deletedHandler} >삭제</Button>
             <Button clickEventHandler={callModalHandler} >수정</Button>
           </StModalDiv>
@@ -104,7 +92,7 @@ const StBtn = styled.button`
 `
 
 const StModalDiv = styled.div`
-  display: ${props => props.isVisible ? "block" : "none"};
+  display: ${props => props.$isVisible ? "block" : "none"};
 `
 
 const StBox = styled.li`
@@ -115,6 +103,7 @@ const StBox = styled.li`
   width: 900px;
   height: 600px;
   border: 1px solid black;
+  padding: 15px;
 `
 
 const StFanLetterBox = styled.section`
@@ -123,8 +112,7 @@ const StFanLetterBox = styled.section`
   align-items: center;
   justify-content: space-between;
   background-color: #eba9f4;
-  padding: 15px;
-  width: 800px;
+  width: 100%;
   height:150px;
   
 
@@ -157,15 +145,14 @@ const StFanDetail = styled.div`
 const StAddress = styled.div`
   display: flex;
   align-items: flex-start;
-  width: 800px;
+  width: 100%;
   font-size: 1.6rem;
   margin-top: 0.6rem;
   margin-bottom: 0.4rem;
 `
 
 const StP = styled.p`
-  display: flex;
-  align-items: center;
+  word-wrap: break-word;
   width: 850px;
   height: 250px;
   background-color: #457299;

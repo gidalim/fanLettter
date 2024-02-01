@@ -11,7 +11,7 @@ const StBtn = styled.button.attrs(props => ({
   background-image: linear-gradient(to right, skyblue, #fcb9fc) ;
   color: white;
   line-height: 1;
-  ${props => props.isActive && `
+  ${props => props.$isActive && `
     background-image : none;
     background-color :#7c63d6;
     
@@ -23,7 +23,7 @@ const StBtn = styled.button.attrs(props => ({
 
 
 function Button({ clickEventHandler, children, isActive }) {
-  return (<StBtn isActive={isActive} onClick={clickEventHandler}>{children}</StBtn>)
+  return (<StBtn $isActive={isActive} onClick={clickEventHandler}>{children}</StBtn>)
 }
 
 export default Button

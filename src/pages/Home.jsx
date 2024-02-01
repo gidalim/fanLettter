@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { UserDataContext } from '../context/UserDataContext';
 import styled from 'styled-components'
 import Button from '../component/Button';
@@ -12,24 +12,14 @@ function Home() {
 
   const { list } = useContext(UserDataContext)
 
-  const [filteredData, setFilteredData] = useState([...list]);
   const [selectedBtn, setSelectedBtn] = useState('카리나');
   const members = ['카리나', '지젤', '윈터', '닝닝']
 
+  const filteredData = list.filter(item => item.selectedPage === selectedBtn)
 
-
-
-  useEffect(() => {
-    setFilteredData(list.filter(item => item.selectedPage === '카리나'));
-  }, [list]);
-
-  // useEffect 안쓰면 데이터가 추가가 안됨
-
+  // useEffect 안쓰면 데이터가 추가 가 안됨
 
   const filteredFanLetter = (selectedPage) => {
-    const fanLetterData = [...list]
-    const newFilteredData = fanLetterData.filter((item) => item.selectedPage === selectedPage)
-    setFilteredData(newFilteredData)
     setSelectedBtn(selectedPage)
 
   }
@@ -53,7 +43,6 @@ function Home() {
               {member}
             </Button>
           ))}
-
         </StMember>
       </StHeader>
 

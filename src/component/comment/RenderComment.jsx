@@ -9,7 +9,7 @@ const RenderComment = ({ filteredData }) => {
 
   const navigate = useNavigate();
   const chaseFanLetter = (item) => {
-    navigate(`/member/${item.id}`)
+    navigate(`detail/${item.id}`)
     console.log(item.id)
   }
 
