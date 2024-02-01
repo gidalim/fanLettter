@@ -1,7 +1,6 @@
 import Router from "./shared/Router";
 import GlobalStyle from "./GlobalStyle";
 
-
 function App() {
   return (<>
     <GlobalStyle />
@@ -9,7 +8,5 @@ function App() {
   </>
   );
 }
-
-
 
 export default App;

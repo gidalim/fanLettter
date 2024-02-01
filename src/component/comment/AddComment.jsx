@@ -22,7 +22,6 @@ function AddComment() {
   }
 
   const addButtonHandler = (e) => {
-    // console.log(e) 이벤트가 잘 넘어오는 지 체크(확인했음)
     e.preventDefault();
 
     if (!name.trim() || !content.trim()) {
