@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 
 
-const FormRenderer = ({ filteredList }) => {
-  console.log('폼 생성용 데이터가 전송 되었는지', filteredList)
+const RenderComment = ({ filteredData }) => {
+  console.log('폼 생성용 데이터가 전송 되었는지', filteredData)
 
   const navigate = useNavigate();
   const chaseFanLetter = (item) => {
@@ -13,7 +13,7 @@ const FormRenderer = ({ filteredList }) => {
     console.log(item.id)
   }
 
-  return filteredList.map(item => (
+  return filteredData.map(item => (
     <StBox key={item.id}
       className='innerBox'
       onClick={() => chaseFanLetter(item)}
@@ -96,4 +96,4 @@ export const StProfile = styled.div`
   justify-content: space-around;
 `
 
-export default FormRenderer
+export default RenderComment

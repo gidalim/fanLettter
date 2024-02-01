@@ -1,28 +1,29 @@
+import { useState, useEffect, useContext } from 'react';
+import { UserDataContext } from '../context/UserDataContext';
 import styled from 'styled-components'
-import { useState, useEffect } from 'react';
 import Button from '../component/Button';
 import AddComment from '../component/comment/AddComment';
-import FormRenderer from '../component/comment/FormRenderer';
+import RenderComment from '../component/comment/RenderComment';
 
 
 
 
-function Home({ addedFanLetter, list }) {
+function Home() {
+
+  const { list } = useContext(UserDataContext)
 
   const [filteredData, setFilteredData] = useState([...list]);
   const [selectedBtn, setSelectedBtn] = useState('카리나');
   const members = ['카리나', '지젤', '윈터', '닝닝']
+
+
+
 
   useEffect(() => {
     setFilteredData(list.filter(item => item.selectedPage === '카리나'));
   }, [list]);
 
   // useEffect 안쓰면 데이터가 추가가 안됨
-
-
-  const addFanLetter = (item) => {
-    addedFanLetter(item);
-  };
 
 
   const filteredFanLetter = (selectedPage) => {
@@ -57,14 +58,12 @@ function Home({ addedFanLetter, list }) {
       </StHeader>
 
       <StBox className='createBox'>
-        <AddComment
-          onSubmit={addFanLetter}
-        />
+        <AddComment />
       </StBox>
       <StMain className='loadBox'>
         <StUl>
-          <FormRenderer
-            filteredList={filteredData}
+          <RenderComment
+            filteredData={filteredData}
           />
         </StUl>
       </StMain >

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Button from '../Button';
 
 
-function DetailComment({ isOpen, onClose, onSave, content, setContent }) {
-  if (!isOpen) return null;
+function DetailComment({ isModalOpen, closeModal, changedHandler, content, setContent }) {
+  if (!isModalOpen) return null;
 
 
   return (
@@ -16,8 +16,8 @@ function DetailComment({ isOpen, onClose, onSave, content, setContent }) {
         >
         </StTextarea>
         <StModalBtn>
-          <Button clickEventHandler={onSave}>수정완료</Button>
-          <Button clickEventHandler={onClose}>수정취소</Button>
+          <Button clickEventHandler={changedHandler}>수정완료</Button>
+          <Button clickEventHandler={closeModal}>수정취소</Button>
         </StModalBtn>
       </div>
     </StModalBox>

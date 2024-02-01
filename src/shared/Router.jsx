@@ -3,6 +3,7 @@ import { useState } from "react";
 import data from './data.json';
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
+import { UserDataContext } from "../context/UserDataContext";
 // import styled from "styled-components";
 
 
@@ -29,23 +30,26 @@ const Router = () => {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="member/*"
-          element={
-            <Home
-              list={list}
-              addedFanLetter={addFanLetter}
-            />}
-        />
-        <Route path="/member/:id" element={
-          <Detail
-            deleteLetter={deleteFanLetter}
-            updateLetter={updateFanLetter}
-            list={list}
-          />} />
-      </Routes>
-    </BrowserRouter>
+    <UserDataContext.Provider value={{
+      list,
+      addFanLetter,
+      deleteFanLetter,
+      updateFanLetter
+    }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="member/*"
+            element={
+              <Home />
+            }
+          />
+          <Route path="/member/:id" element={
+            <Detail />
+          }
+          />
+        </Routes>
+      </BrowserRouter>
+    </UserDataContext.Provider>
   )
 }
 

@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../Button'
 import profile from '../../assets/profile.png';
 import styled from 'styled-components';
+import { UserDataContext } from '../../context/UserDataContext';
 
 
-function AddComment({ onSubmit }) {
+function AddComment() {
 
+  const { addFanLetter } = useContext(UserDataContext)
 
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
@@ -38,10 +40,9 @@ function AddComment({ onSubmit }) {
       time: new Date().toISOString(),
       selectedPage: selectedPage
     };
+    addFanLetter(addComment)
     setName('')
     setContent('')
-    console.log('입력받은 새로운 데이터 추가', addComment);
-    onSubmit(addComment)
     window.alert('팬레터를 발송했습니다!')
   }
 

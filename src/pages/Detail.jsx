@@ -1,12 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import Button from "../component/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DetailComment from "../component/comment/DetailComment";
+import { UserDataContext } from "../context/UserDataContext";
 
 
-function Detail({ list, deleteLetter, updateLetter }) {
+function Detail() {
 
+  const { list, deleteFanLetter, updateFanLetter } = useContext(UserDataContext)
 
   console.log('디테일에서 받아오는 정보', list)
   const { id } = useParams();
@@ -32,7 +34,7 @@ function Detail({ list, deleteLetter, updateLetter }) {
     setIsDivVisible(false);
   }
 
-  const offModal = () => {
+  const closeModal = () => {
     setContent(fanLetter.content);
     setIsModalOpen(false);
     setIsDivVisible(true);
@@ -41,14 +43,14 @@ function Detail({ list, deleteLetter, updateLetter }) {
   const changedHandler = () => {
     const updatedFanLetter = { ...fanLetter, content: content }
     setFanLetter(updatedFanLetter);
-    updateLetter(updatedFanLetter);
+    updateFanLetter(updatedFanLetter);
     setContent(content)
     navigate('/member');
-    offModal();
+    closeModal();
   }
 
   const deletedHandler = () => {
-    deleteLetter(fanLetter.id)
+    deleteFanLetter(fanLetter.id)
     navigate('/member');
   }
 
@@ -81,9 +83,9 @@ function Detail({ list, deleteLetter, updateLetter }) {
             <Button clickEventHandler={callModal} >수정</Button>
           </StModalDiv>
           <DetailComment
-            isOpen={isModalOpen}
-            onClose={offModal}
-            onSave={changedHandler}
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+            changedHandler={changedHandler}
             content={content}
             setContent={setContent}
           />
