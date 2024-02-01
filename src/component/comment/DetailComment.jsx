@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import Button from '../Button';
 
 
 function DetailComment({ isOpen, onClose, onSave, content, setContent }) {
@@ -14,8 +15,10 @@ function DetailComment({ isOpen, onClose, onSave, content, setContent }) {
           onChange={(e) => setContent(e.target.value)}
         >
         </StTextarea>
-        <button onClick={onSave}>수정완료</button>
-        <button onClick={onClose}>수정취소</button>
+        <StModalBtn>
+          <Button clickEventHandler={onSave}>수정완료</Button>
+          <Button clickEventHandler={onClose}>수정취소</Button>
+        </StModalBtn>
       </div>
     </StModalBox>
 
@@ -28,16 +31,24 @@ export default DetailComment
 const StModalBox = styled.div`
   display: flex;
   width: 860px;
-  height: 180px;
 `
 
 const StTextarea = styled.textarea`
   width: 855px;
-  height: 175px;
+  height: 290px;
   background-color: #457299;
+  border: 1px solid black;
   color: #e5d2d2;
   font-size: 1.3rem;
   line-height: 1.7;
 `
 
+
+const StModalBtn = styled.div`
+  width: 200px;
+  height: 30px;
+  gap: 5px;
+  padding-top: 5px;
+
+`
 

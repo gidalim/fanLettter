@@ -10,15 +10,14 @@ import FormRenderer from '../component/comment/FormRenderer';
 function Home({ addedFanLetter, list }) {
 
   const [filteredData, setFilteredData] = useState([...list]);
-  const [seletedBtn, setSeletedBtn] = useState('karina');
+  const [selectedBtn, setSelectedBtn] = useState('카리나');
+  const members = ['카리나', '지젤', '윈터', '닝닝']
 
   useEffect(() => {
-    setFilteredData(list.filter(item => item.selectedPage === 'karina'));
+    setFilteredData(list.filter(item => item.selectedPage === '카리나'));
   }, [list]);
 
   // useEffect 안쓰면 데이터가 추가가 안됨
-
-
 
 
   const addFanLetter = (item) => {
@@ -31,7 +30,8 @@ function Home({ addedFanLetter, list }) {
     const fanLetterData = [...list]
     const newFilteredData = fanLetterData.filter((item) => item.selectedPage === selectedPage)
     setFilteredData(newFilteredData)
-    setSeletedBtn(selectedPage)
+    setSelectedBtn(selectedPage)
+
   }
 
 
@@ -43,22 +43,17 @@ function Home({ addedFanLetter, list }) {
           <div>팬레터 제작하기</div>
           <div>React_4기 박강토</div>
         </StName>
-
         <StMember>
-          <Button
-            isActive={seletedBtn === 'karina'}
-            clickEventHandler={() => {
-              filteredFanLetter('karina');
-            }}>카리나</Button>
-          <Button clickEventHandler={() => {
-            filteredFanLetter('giselle');
-          }}>지젤</Button>
-          <Button clickEventHandler={() => {
-            filteredFanLetter('winter');
-          }}>윈터</Button>
-          <Button clickEventHandler={() => {
-            filteredFanLetter('ningning');
-          }}>닝닝</Button>
+          {members.map(member => (
+            <Button
+              key={member}
+              isActive={selectedBtn === member}
+              clickEventHandler={() => filteredFanLetter(member)}
+            >
+              {member}
+            </Button>
+          ))}
+
         </StMember>
       </StHeader>
 
@@ -68,7 +63,6 @@ function Home({ addedFanLetter, list }) {
         />
       </StBox>
       <StMain className='loadBox'>
-        박스가 나올 위치
         <StUl>
           <FormRenderer
             filteredList={filteredData}
@@ -81,6 +75,8 @@ function Home({ addedFanLetter, list }) {
   )
 }
 
+
+
 const StHeader = styled.header`
   display: flex;
   flex-direction: column;
@@ -88,7 +84,7 @@ const StHeader = styled.header`
   align-items: center;
   width: 1100px;
   height: 300px;
-  background-color: #78797e;
+  background-image: url('../assets/bgImg.jpg');
   `
 
 const StName = styled.h1`

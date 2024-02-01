@@ -11,7 +11,7 @@ function AddComment({ onSubmit }) {
 
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
-  const [selectedPage, setSelectedPage] = useState('karina');
+  const [selectedPage, setSelectedPage] = useState('카리나');
 
 
   const addName = (e) => {
@@ -76,10 +76,10 @@ function AddComment({ onSubmit }) {
               value={selectedPage}
               onChange={(e) =>
                 setSelectedPage(e.target.value)}>
-              <option value="karina">카리나</option>
-              <option value="giselle">지젤</option>
-              <option value="winter">윈터</option>
-              <option value="ningning">닝닝</option>
+              <option value="카리나">카리나</option>
+              <option value="지젤">지젤</option>
+              <option value="윈터">윈터</option>
+              <option value="닝닝">닝닝</option>
             </select>
             <Button clickEventHandler={(e) => {
               addButtonHandler(e);

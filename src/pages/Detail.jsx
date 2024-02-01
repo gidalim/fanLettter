@@ -12,9 +12,10 @@ function Detail({ list, deleteLetter, updateLetter }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [fanLetter, setFanLetter] = useState(null);
+  const [fanLetter, setFanLetter] = useState('');
   const [content, setContent] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDivVisible, setIsDivVisible] = useState(true)
 
   useEffect(() => {
     const letter = list.find(item => item.id === id);
@@ -28,16 +29,21 @@ function Detail({ list, deleteLetter, updateLetter }) {
 
   const callModal = () => {
     setIsModalOpen(true);
+    setIsDivVisible(false);
   }
 
   const offModal = () => {
     setContent(fanLetter.content);
     setIsModalOpen(false);
+    setIsDivVisible(true);
   }
 
   const changedHandler = () => {
-    setFanLetter({ ...fanLetter, content: content });
-    // navigate('/member');
+    const updatedFanLetter = { ...fanLetter, content: content }
+    setFanLetter(updatedFanLetter);
+    updateLetter(updatedFanLetter);
+    setContent(content)
+    navigate('/member');
     offModal();
   }
 
@@ -67,18 +73,22 @@ function Detail({ list, deleteLetter, updateLetter }) {
             </StFanDetail>
           </StFanLetterBox>
           <StAddress>to.{fanLetter.selectedPage}</StAddress>
-          <StP>{fanLetter.content}</StP>
-          <div>
+          <StModalDiv
+            isVisible={isDivVisible}
+          >
+            <StP>{fanLetter.content}</StP>
             <Button clickEventHandler={deletedHandler} >삭제</Button>
             <Button clickEventHandler={callModal} >수정</Button>
-            <DetailComment
-              isOpen={isModalOpen}
-              onClose={offModal}
-              onSave={changedHandler}
-              content={content}
-              setContent={setContent}
-            />
-          </div>
+          </StModalDiv>
+          <DetailComment
+            isOpen={isModalOpen}
+            onClose={offModal}
+            onSave={changedHandler}
+            content={content}
+            setContent={setContent}
+          />
+
+
         </StBox >
       ) : (
         <p>팬레터가 존재하지 않아요!</p>
@@ -90,6 +100,13 @@ function Detail({ list, deleteLetter, updateLetter }) {
 
 export default Detail
 
+
+
+
+
+const StModalDiv = styled.div`
+  display: ${props => props.isVisible ? "block" : "none"};
+`
 
 const StBox = styled.li`
   display: flex;
