@@ -75,7 +75,6 @@ export const StP = styled.p`
 
 `
 
-
 export const StImg = styled.figure`
   width: 60px;
   height: 60px;
@@ -90,14 +89,11 @@ export const StImg = styled.figure`
   }
 `
 
-
 export const StProfile = styled.div`
   display: flex;
   height: 50px;
   flex-direction: column;
   justify-content: space-around;
 `
-
-
 
 export default FormRenderer
