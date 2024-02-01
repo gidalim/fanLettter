@@ -1,9 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-
-
-
 const RenderComment = ({ filteredData }) => {
   console.log('폼 생성용 데이터가 전송 되었는지', filteredData)
 

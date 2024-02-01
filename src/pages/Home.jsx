@@ -5,9 +5,6 @@ import Button from '../component/Button';
 import AddComment from '../component/comment/AddComment';
 import RenderComment from '../component/comment/RenderComment';
 
-
-
-
 function Home() {
 
   const { list } = useContext(UserDataContext)
@@ -17,14 +14,10 @@ function Home() {
 
   const filteredData = list.filter(item => item.selectedPage === selectedBtn)
 
-  // useEffect 안쓰면 데이터가 추가 가 안됨
-
   const filteredFanLetter = (selectedPage) => {
     setSelectedBtn(selectedPage)
 
   }
-
-
 
   return (
     <>
@@ -45,7 +38,6 @@ function Home() {
           ))}
         </StMember>
       </StHeader>
-
       <StBox className='createBox'>
         <AddComment />
       </StBox>
@@ -56,8 +48,6 @@ function Home() {
           />
         </StUl>
       </StMain >
-
-
     </>
   )
 }
@@ -81,7 +71,6 @@ const StName = styled.h1`
   margin-top: 20px;
   background-color: azure;
 `
-
 const StMember = styled.h1`
   display: flex;
   justify-content: space-between;
@@ -90,7 +79,6 @@ const StMember = styled.h1`
   gap: 15px;
   padding-bottom: 15px;
 `
-
 const StMain = styled.main`
   display: flex;
   flex-direction: column;
@@ -101,7 +89,6 @@ const StMain = styled.main`
   border: 1px solid black;
   color: black;
 `
-
 const StBox = styled.form`
   display: flex;
   width: 1100px;

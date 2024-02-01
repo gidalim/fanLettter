@@ -73,12 +73,10 @@ function Detail() {
             setEditContent={setEditContent}
           />
 
-
         </StBox >
       ) : (
         <p>팬레터가 존재하지 않아요!</p>
       )}
-
     </div>
   )
 }

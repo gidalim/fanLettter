@@ -3,11 +3,6 @@ import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 import { UserDataProvide } from "../context/UserDataContext";
 
-
-
-
-
-
 const Router = () => {
 
   return (

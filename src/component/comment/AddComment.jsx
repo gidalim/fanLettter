@@ -6,7 +6,6 @@ import profile from '../../assets/profile.png';
 import styled from 'styled-components';
 import { UserDataContext } from '../../context/UserDataContext';
 
-
 function AddComment() {
 
   const { addFanLetter } = useContext(UserDataContext)
@@ -15,14 +14,12 @@ function AddComment() {
   const [content, setContent] = useState('');
   const [selectedPage, setSelectedPage] = useState('카리나');
 
-
   const addName = (e) => {
     setName(e.target.value)
   }
   const addcontent = (e) => {
     setContent(e.target.value)
   }
-
 
   const addButtonHandler = (e) => {
     // console.log(e) 이벤트가 잘 넘어오는 지 체크(확인했음)
@@ -45,7 +42,6 @@ function AddComment() {
     setContent('')
     window.alert('팬레터를 발송했습니다!')
   }
-
 
   return (
     <>
@@ -95,7 +91,6 @@ function AddComment() {
 
 export default AddComment
 
-
 const StSection = styled.section`
   display: flex;
   align-items: center;
@@ -135,7 +130,6 @@ const StBox = styled.div`
   background-color: #7a4ea0;
   padding: 15px;
 `
-
 const StSelectArea = styled.div`
   display: flex;
   justify-content: flex-end;

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 import Button from '../Button';
 
-
 function DetailComment({
   isModalOpen,
   closeModal,
@@ -11,7 +10,6 @@ function DetailComment({
   setEditContent,
 }) {
   if (!isModalOpen) return null;
-
 
   return (
     <StModalBox className='modalOverlay'>
