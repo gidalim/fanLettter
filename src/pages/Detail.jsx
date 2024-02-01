@@ -8,45 +8,39 @@ import { UserDataContext } from "../context/UserDataContext";
 
 function Detail() {
 
-  const { list, deleteFanLetter, updateFanLetter } = useContext(UserDataContext)
 
-  console.log('디테일에서 받아오는 정보', list)
   const { id } = useParams();
   const navigate = useNavigate();
+  const { list,
+    deleteFanLetter,
+    updateFanLetter,
+    callModal,
+    closeModal,
+    isModalOpen,
+    editContent,
+    setEditContent,
+    isDivVisible,
+  } = useContext(UserDataContext)
 
   const [fanLetter, setFanLetter] = useState('');
-  const [content, setContent] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDivVisible, setIsDivVisible] = useState(true)
 
   useEffect(() => {
     const letter = list.find(item => item.id === id);
     if (letter) {
       setFanLetter(letter)
-      setContent(letter.content)
+      setEditContent(letter.content)
     }
-  }, [id, list])
+  }, [id, list, setEditContent])
 
 
-
-  const callModal = () => {
-    setIsModalOpen(true);
-    setIsDivVisible(false);
-  }
-
-  const closeModal = () => {
-    setContent(fanLetter.content);
-    setIsModalOpen(false);
-    setIsDivVisible(true);
-  }
+  const callModalHandler = () => {
+    callModal(fanLetter.content);
+  };
 
   const changedHandler = () => {
-    const updatedFanLetter = { ...fanLetter, content: content }
-    setFanLetter(updatedFanLetter);
+    const updatedFanLetter = { ...fanLetter, content: editContent }
     updateFanLetter(updatedFanLetter);
-    setContent(content)
     navigate('/member');
-    closeModal();
   }
 
   const deletedHandler = () => {
@@ -55,14 +49,15 @@ function Detail() {
   }
 
 
+  const goHomeBtn = (e) => {
+    closeModal();
+    navigate('/member')
+  }
+
 
   return (
     <div>
-      <Button style={{
-        margin: '15px',
-      }} clickEventHandler={(e) => {
-        navigate("/member")
-      }} >집으로</Button>
+      <StBtn onClick={goHomeBtn} >집으로</StBtn>
       {fanLetter ? (
         <StBox>
           <StFanLetterBox>
@@ -80,14 +75,14 @@ function Detail() {
           >
             <StP>{fanLetter.content}</StP>
             <Button clickEventHandler={deletedHandler} >삭제</Button>
-            <Button clickEventHandler={callModal} >수정</Button>
+            <Button clickEventHandler={callModalHandler} >수정</Button>
           </StModalDiv>
           <DetailComment
             isModalOpen={isModalOpen}
             closeModal={closeModal}
             changedHandler={changedHandler}
-            content={content}
-            setContent={setContent}
+            editContent={editContent}
+            setEditContent={setEditContent}
           />
 
 
@@ -104,7 +99,9 @@ export default Detail
 
 
 
-
+const StBtn = styled.button`
+  margin: 15px;
+`
 
 const StModalDiv = styled.div`
   display: ${props => props.isVisible ? "block" : "none"};

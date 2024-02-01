@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import Button from '../Button';
 
 
-function DetailComment({ isModalOpen, closeModal, changedHandler, content, setContent }) {
+function DetailComment({ isModalOpen,
+  closeModal,
+  changedHandler,
+  editContent,
+  setEditContent,
+}) {
   if (!isModalOpen) return null;
 
 
@@ -11,8 +16,8 @@ function DetailComment({ isModalOpen, closeModal, changedHandler, content, setCo
     <StModalBox className='modalOverlay'>
       <div className='modalContents'>
         <StTextarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          value={editContent}
+          onChange={(e) => setEditContent(e.target.value)}
         >
         </StTextarea>
         <StModalBtn>
