@@ -28,16 +28,17 @@ export const updateLetter = (updatedFanLetter) => {
   };
 };
 
-export const callModal = (payload) => {
+export const callModal = (content) => {
   return {
     type: CALL_MODAL,
-    payload,
+    payload: { content, isDivVisible: false },
   };
 };
 
 export const closeModal = () => {
   return {
     type: CLOSE_MODAL,
+    payload: { isDivVisible: true },
   };
 };
 
@@ -74,9 +75,18 @@ const ControlFanLetters = (state = initialState, action) => {
         ),
       };
     case CALL_MODAL:
-      return { ...state, isModalOpen: true, editContent: action.payload };
+      return {
+        ...state,
+        isModalOpen: true,
+        editContent: action.payload.content,
+        isDivVisible: action.payload.isDivVisible,
+      };
     case CLOSE_MODAL:
-      return { ...state, isModalOpen: false };
+      return {
+        ...state,
+        isModalOpen: false,
+        isDivVisible: action.payload.isDivVisible,
+      };
     case SET_EDIT_CONTENTS:
       return {};
 

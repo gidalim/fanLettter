@@ -3,11 +3,10 @@ import styled from 'styled-components'
 import Button from '../component/Button';
 import AddComment from '../component/comment/AddComment';
 import RenderComment from '../component/comment/RenderComment';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Home() {
 
-  const dispatch = useDispatch();
   const { fanLetters } = useSelector(state => state.ControlFanLetters);
 
 

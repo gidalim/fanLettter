@@ -36,7 +36,9 @@ function AddComment() {
       name,
       content,
       time: new Date().toISOString(),
-      selectedPage: selectedPage
+      selectedPage: selectedPage,
+      modalState: false,
+      divState: true
     };
 
     dispatch(addLetter(addComment));
