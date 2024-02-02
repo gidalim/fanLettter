@@ -1,29 +1,29 @@
 import initialData from "../../data.json";
 
-const ADD_FANLETTERS = "fanLetters/addFanLetters";
-const DELETE_FANLETTERS = "fanLettes/deleteFanLetters";
-const UPDATE_FANLETTERS = "fanLettes/updateFanLetters";
+const ADD_FAN_LETTERS = "fanLetters/addFanLetters";
+const DELETE_FAN_LETTERS = "fanLetters/deleteFanLetters";
+const UPDATE_FAN_LETTERS = "fanLetters/updateFanLetters";
 const CALL_MODAL = "fanLetters/details/callModals";
 const CLOSE_MODAL = "fanLetters/details/closeModals";
 const SET_EDIT_CONTENTS = "fanLetters/details/setEditContents";
 
 export const addLetter = (payload) => {
   return {
-    type: ADD_FANLETTERS,
+    type: ADD_FAN_LETTERS,
     payload: payload,
   };
 };
 
 export const deleteLetter = (id) => {
   return {
-    type: DELETE_FANLETTERS,
+    type: DELETE_FAN_LETTERS,
     payload: id,
   };
 };
 
 export const updateLetter = (updatedFanLetter) => {
   return {
-    type: UPDATE_FANLETTERS,
+    type: UPDATE_FAN_LETTERS,
     payload: updatedFanLetter,
   };
 };
@@ -59,16 +59,16 @@ const initialState = {
 
 const ControlFanLetters = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_FANLETTERS:
+    case ADD_FAN_LETTERS:
       return { ...state, fanLetters: [...state.fanLetters, action.payload] };
-    case DELETE_FANLETTERS:
+    case DELETE_FAN_LETTERS:
       return {
         ...state,
         fanLetters: state.fanLetters.filter(
           (letter) => letter.id !== action.payload
         ),
       };
-    case UPDATE_FANLETTERS:
+    case UPDATE_FAN_LETTERS:
       return {
         ...state,
         fanLetters: state.fanLetters.map((letter) =>
