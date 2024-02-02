@@ -1,9 +1,6 @@
 import styled from "styled-components"
 
-
-const StBtn = styled.button.attrs(props => ({
-
-}))`
+const StBtn = styled.button`
   padding: 6px 12px;
   width: 90px;
   border-radius: 5px;
@@ -18,10 +15,6 @@ const StBtn = styled.button.attrs(props => ({
   `}
   
 `
-
-
-
-
 function Button({ clickEventHandler, children, isActive }) {
   return (<StBtn $isActive={isActive} onClick={clickEventHandler}>{children}</StBtn>)
 }
