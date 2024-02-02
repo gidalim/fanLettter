@@ -7,10 +7,10 @@ const CALL_MODAL = "fanLetters/details/callModals";
 const CLOSE_MODAL = "fanLetters/details/closeModals";
 const SET_EDIT_CONTENTS = "fanLetters/details/setEditContents";
 
-export const addLetter = (payload) => {
+export const addLetter = (letter) => {
   return {
     type: ADD_FAN_LETTERS,
-    payload: payload,
+    payload: letter,
   };
 };
 
@@ -21,10 +21,10 @@ export const deleteLetter = (id) => {
   };
 };
 
-export const updateLetter = (updatedFanLetter) => {
+export const updateLetter = (update) => {
   return {
     type: UPDATE_FAN_LETTERS,
-    payload: updatedFanLetter,
+    payload: update,
   };
 };
 

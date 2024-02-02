@@ -21,7 +21,6 @@ function DetailComment({
     dispatch(closeModal());
   }
 
-
   if (!isModalOpen) return null;
 
   return (
