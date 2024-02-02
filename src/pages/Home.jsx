@@ -1,18 +1,20 @@
-import { useState, useContext } from 'react';
-import { UserDataContext } from '../context/UserDataContext';
+import { useState } from 'react';
 import styled from 'styled-components'
 import Button from '../component/Button';
 import AddComment from '../component/comment/AddComment';
 import RenderComment from '../component/comment/RenderComment';
+import { useDispatch, useSelector } from 'react-redux';
 
 function Home() {
 
-  const { list } = useContext(UserDataContext)
+  const dispatch = useDispatch();
+  const { fanLetters } = useSelector(state => state.ControlFanLetters);
+
 
   const [selectedBtn, setSelectedBtn] = useState('카리나');
   const members = ['카리나', '지젤', '윈터', '닝닝']
 
-  const filteredData = list.filter(item => item.selectedPage === selectedBtn)
+  const filteredData = fanLetters.filter(item => item.selectedPage === selectedBtn)
 
   const filteredFanLetter = (selectedPage) => {
     setSelectedBtn(selectedPage)

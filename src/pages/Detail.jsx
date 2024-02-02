@@ -1,45 +1,37 @@
 import { useParams, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import Button from "../component/Button";
-import { useContext } from "react";
 import DetailComment from "../component/comment/DetailComment";
-import { UserDataContext } from "../context/UserDataContext";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteLetter, updateLetter, callModal, closeModal } from "../shared/redux/modules/ControlFanLetters";
 
 function Detail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { fanLetters, isModalOpen, editContent, isDivVisible } = useSelector(state => state.ControlFanLetters);
 
-  const { list,
-    deleteFanLetter,
-    updateFanLetter,
-    callModal,
-    closeModal,
-    isModalOpen,
-    editContent,
-    setEditContent,
-    isDivVisible,
-  } = useContext(UserDataContext)
 
-  const letter = list.find(item => item.id === id);
+  const letter = fanLetters.find(item => item.id === id);
 
   const callModalHandler = () => {
-    callModal(letter.content);
+    dispatch(callModal(letter.content));
   };
 
   const changedHandler = () => {
     const updatedFanLetter = { ...letter, content: editContent }
-    updateFanLetter(updatedFanLetter);
-    closeModal();
+    dispatch(updateLetter(updatedFanLetter));
+    dispatch(closeModal());
     navigate('/');
   }
 
   const deletedHandler = () => {
-    deleteFanLetter(letter.id)
+    dispatch(deleteLetter(id))
     navigate('/');
   }
 
   const goHomeBtn = (e) => {
-    closeModal();
+    dispatch(closeModal());
     navigate('/')
   }
 
@@ -70,7 +62,6 @@ function Detail() {
             closeModal={closeModal}
             changedHandler={changedHandler}
             editContent={editContent}
-            setEditContent={setEditContent}
           />
 
         </StBox >

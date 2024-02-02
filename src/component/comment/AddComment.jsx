@@ -1,15 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../Button'
 import profile from '../../assets/profile.png';
 import styled from 'styled-components';
-import { UserDataContext } from '../../context/UserDataContext';
+import { useDispatch } from 'react-redux';
+import { addLetter } from '../../shared/redux/modules/ControlFanLetters';
+
 
 function AddComment() {
 
-  const { addFanLetter } = useContext(UserDataContext)
-
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [selectedPage, setSelectedPage] = useState('카리나');
@@ -28,6 +29,7 @@ function AddComment() {
       alert('닉네임과 팬레터 내용을 모두 입력해주세요!');
       return;
     }
+
     const addComment = {
       id: uuidv4(),
       profile: profile,
@@ -36,7 +38,8 @@ function AddComment() {
       time: new Date().toISOString(),
       selectedPage: selectedPage
     };
-    addFanLetter(addComment)
+
+    dispatch(addLetter(addComment));
     setName('')
     setContent('')
     window.alert('팬레터를 발송했습니다!')

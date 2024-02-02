@@ -1,14 +1,22 @@
 import React from 'react'
 import styled from 'styled-components';
 import Button from '../Button';
+import { useDispatch } from 'react-redux';
+import { setEditContents } from '../../shared/redux/modules/ControlFanLetters';
 
 function DetailComment({
   isModalOpen,
   closeModal,
   changedHandler,
   editContent,
-  setEditContent,
 }) {
+
+  const dispatch = useDispatch()
+
+  const editHandler = (e) => {
+    dispatch(setEditContents(e.target.value));
+  }
+
   if (!isModalOpen) return null;
 
   return (
@@ -16,7 +24,7 @@ function DetailComment({
       <div className='modalContents'>
         <StTextarea
           value={editContent}
-          onChange={(e) => setEditContent(e.target.value)}
+          onChange={(e) => editHandler(e.target.value)}
         >
         </StTextarea>
         <StModalBtn>

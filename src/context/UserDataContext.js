@@ -40,15 +40,15 @@ export function UserDataProvide({ children }) {
     <UserDataContext.Provider
       value={{
         list,
-        addFanLetter,
-        deleteFanLetter,
-        updateFanLetter,
+        // addFanLetter,
+        // deleteFanLetter,
+        // updateFanLetter,
         isModalOpen,
         setIsModalOpen,
         editContent,
         setEditContent,
-        callModal,
-        closeModal,
+        // callModal,
+        // closeModal,
         isDivVisible,
         setIsDivVisible,
       }}
