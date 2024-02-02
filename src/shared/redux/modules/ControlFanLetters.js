@@ -1,4 +1,4 @@
-import initaialData from "../../data.json";
+import initialData from "../../data.json";
 
 const ADD_FANLETTERS = "fanLetters/addFanLetters";
 const DELETE_FANLETTERS = "fanLettes/deleteFanLetters";
@@ -39,6 +39,7 @@ export const closeModal = () => {
   return {
     type: CLOSE_MODAL,
     payload: { isDivVisible: true },
+    editContent: "",
   };
 };
 
@@ -50,7 +51,7 @@ export const setEditContents = (content) => {
 };
 
 const initialState = {
-  fanLetters: initaialData,
+  fanLetters: initialData,
   isModalOpen: false,
   editContent: "",
   isDivVisible: true,
@@ -86,9 +87,13 @@ const ControlFanLetters = (state = initialState, action) => {
         ...state,
         isModalOpen: false,
         isDivVisible: action.payload.isDivVisible,
+        editContent: action.payload.editContent,
       };
     case SET_EDIT_CONTENTS:
-      return {};
+      return {
+        ...state,
+        editContent: action.payload,
+      };
 
     default:
       return state;

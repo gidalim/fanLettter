@@ -17,6 +17,11 @@ function DetailComment({
     dispatch(setEditContents(e.target.value));
   }
 
+  const closeHandle = () => {
+    dispatch(closeModal());
+  }
+
+
   if (!isModalOpen) return null;
 
   return (
@@ -24,12 +29,12 @@ function DetailComment({
       <div className='modalContents'>
         <StTextarea
           value={editContent}
-          onChange={(e) => editHandler(e.target.value)}
+          onChange={editHandler}
         >
         </StTextarea>
         <StModalBtn>
           <Button clickEventHandler={changedHandler}>수정완료</Button>
-          <Button clickEventHandler={closeModal}>수정취소</Button>
+          <Button clickEventHandler={closeHandle}>수정취소</Button>
         </StModalBtn>
       </div>
     </StModalBox>
