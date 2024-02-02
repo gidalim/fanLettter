@@ -54,8 +54,8 @@ function Detail() {
             $isVisible={isDivVisible}
           >
             <StP>{letter.content}</StP>
-            <Button clickEventHandler={deletedHandler} >삭제</Button>
-            <Button clickEventHandler={callModalHandler} >수정</Button>
+            <Button onClick={deletedHandler} >삭제</Button>
+            <Button onClick={callModalHandler} >수정</Button>
           </StModalDiv>
           <DetailComment
             isModalOpen={isModalOpen}

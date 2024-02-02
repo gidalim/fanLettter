@@ -13,10 +13,10 @@ const StBtn = styled.button`
     background-color :#7c63d6;
     
   `}
-  
+
 `
-function Button({ clickEventHandler, children, isActive }) {
-  return (<StBtn $isActive={isActive} onClick={clickEventHandler}>{children}</StBtn>)
+function Button({ onClick, children, isActive }) {
+  return (<StBtn $isActive={isActive} onClick={onClick}>{children}</StBtn>)
 }
 
 export default Button

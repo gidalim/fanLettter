@@ -82,7 +82,7 @@ function AddComment() {
               <option value="윈터">윈터</option>
               <option value="닝닝">닝닝</option>
             </select>
-            <Button clickEventHandler={(e) => {
+            <Button onClick={(e) => {
               addButtonHandler(e);
             }}
             >발송하기</Button>

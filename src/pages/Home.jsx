@@ -32,7 +32,7 @@ function Home() {
             <Button
               key={member}
               isActive={selectedBtn === member}
-              clickEventHandler={() => filteredFanLetter(member)}
+              onClick={() => filteredFanLetter(member)}
             >
               {member}
             </Button>

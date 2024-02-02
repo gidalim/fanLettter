@@ -32,8 +32,8 @@ function DetailComment({
         >
         </StTextarea>
         <StModalBtn>
-          <Button clickEventHandler={changedHandler}>수정완료</Button>
-          <Button clickEventHandler={closeHandle}>수정취소</Button>
+          <Button onClick={changedHandler}>수정완료</Button>
+          <Button onClick={closeHandle}>수정취소</Button>
         </StModalBtn>
       </div>
     </StModalBox>
