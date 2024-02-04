@@ -82,7 +82,6 @@ const StMain = styled.main`
   align-items: center;
   width: 1100px;
   height: auto;
-  border: 1px solid black;
   color: black;
 `
 const StBox = styled.form`
@@ -94,7 +93,8 @@ const StBox = styled.form`
 const StUl = styled.ul`
   display: flex;
   flex-direction: column;
-  background-color: #f6f6c0;
+  background-color: #f3e1edad;
+  border-radius: 15px;
 `
 
 

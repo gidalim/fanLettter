@@ -44,7 +44,7 @@ export const StBox = styled.li`
   align-items: center;
   width: 1100px;
   height: 120px;
-  border: 1px solid black;
+  border: 1px solid #4ba7f2;
   color: black;
   border-radius: 5px;
   padding: 10px;
@@ -64,7 +64,7 @@ export const StP = styled.p`
   padding: 5px;
   margin-left: 70px;
   border-radius: 5px;
-  background-color: palegreen;
+  background-color: #e0cef3;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

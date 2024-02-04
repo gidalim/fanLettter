@@ -128,7 +128,8 @@ const StBox = styled.div`
   align-items: center;
   width: 500px;
   height: 300px;
-  background-color: #7a4ea0;
+  border-radius: 15px;
+  background-color: #f3e1ed;
   padding: 15px;
 `
 const StSelectArea = styled.div`

@@ -52,7 +52,7 @@ const StTextarea = styled.textarea`
   position: sticky;
   width: 855px;
   height: 290px;
-  background-color: #457299;
+  background-color: #e7e7e7;
   border: 1px solid black;
   color: #e5d2d2;
   font-size: 1.3rem;
