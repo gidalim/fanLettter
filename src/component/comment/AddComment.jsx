@@ -18,7 +18,7 @@ function AddComment() {
   const addName = (e) => {
     setName(e.target.value)
   }
-  const addcontent = (e) => {
+  const addContent = (e) => {
     setContent(e.target.value)
   }
 
@@ -37,8 +37,6 @@ function AddComment() {
       content,
       time: new Date().toISOString(),
       selectedPage: selectedPage,
-      // modalState: false,
-      // divState: true
     };
 
     dispatch(addLetter(addComment));
@@ -67,7 +65,7 @@ function AddComment() {
             maxLength={'120'}
             placeholder='팬레터는 최대120자까지 작성이 가능해요.'
             value={content}
-            onChange={addcontent}
+            onChange={addContent}
           />
         </StSectionComment>
         <StSection>

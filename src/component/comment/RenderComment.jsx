@@ -5,7 +5,7 @@ const RenderComment = ({ filteredData }) => {
   console.log('폼 생성용 데이터가 전송 되었는지', filteredData)
 
   const navigate = useNavigate();
-  const chaseFanLetter = (item) => {
+  const getFanLetterId = (item) => {
     navigate(`detail/${item.id}`)
     console.log(item.id)
   }
@@ -13,7 +13,7 @@ const RenderComment = ({ filteredData }) => {
   return filteredData.map(item => (
     <StBox key={item.id}
       className='innerBox'
-      onClick={() => chaseFanLetter(item)}
+      onClick={() => getFanLetterId(item)}
     >
       <StCommentBox className='StCommentBox'>
         <StImg>

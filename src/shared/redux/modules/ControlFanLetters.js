@@ -32,17 +32,15 @@ const initialState = {
 const ControlFanLetters = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAN_LETTERS:
-      return { ...state, fanLetters: [...state.fanLetters, action.payload] };
+      return { fanLetters: [...state.fanLetters, action.payload] };
     case DELETE_FAN_LETTERS:
       return {
-        ...state,
         fanLetters: state.fanLetters.filter(
           (letter) => letter.id !== action.payload
         ),
       };
     case UPDATE_FAN_LETTERS:
       return {
-        ...state,
         fanLetters: state.fanLetters.map((letter) =>
           letter.id === action.payload.id ? action.payload : letter
         ),
