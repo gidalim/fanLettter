@@ -43,7 +43,6 @@ function DetailComment({
 
 export default DetailComment
 
-
 const StModalBox = styled.div`
   display: flex;
   width: 860px;

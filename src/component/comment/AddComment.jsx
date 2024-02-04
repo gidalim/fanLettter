@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { addLetter } from '../../shared/redux/modules/ControlFanLetters';
 
-
 function AddComment() {
 
   const dispatch = useDispatch();

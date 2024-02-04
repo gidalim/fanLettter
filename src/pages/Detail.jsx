@@ -6,14 +6,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteLetter, updateLetter } from "../shared/redux/modules/ControlFanLetters";
 import { openModal, closeModal } from "../shared/redux/modules/ControlModal";
 
-
 function Detail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { fanLetters } = useSelector(state => state.ControlFanLetters);
   const { isModalOpen, isDivVisible, editContent } = useSelector(state => state.ControlModal);
-
 
   const letter = fanLetters.find(item => item.id === id);
 

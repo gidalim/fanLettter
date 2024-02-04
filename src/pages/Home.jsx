@@ -8,11 +8,8 @@ import { useSelector } from 'react-redux';
 function Home() {
 
   const { fanLetters } = useSelector(state => state.ControlFanLetters);
-
-
   const [selectedBtn, setSelectedBtn] = useState('카리나');
   const members = ['카리나', '지젤', '윈터', '닝닝']
-
   const filteredData = fanLetters.filter(item => item.selectedPage === selectedBtn)
 
   const filteredFanLetter = (selectedPage) => {
@@ -52,8 +49,6 @@ function Home() {
     </>
   )
 }
-
-
 
 const StHeader = styled.header`
   display: flex;
