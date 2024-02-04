@@ -52,9 +52,9 @@ const StTextarea = styled.textarea`
   position: sticky;
   width: 855px;
   height: 290px;
-  background-color: #e7e7e7;
+  background-color: #e0cef3;
   border: 1px solid black;
-  color: #e5d2d2;
+  color: #1c1a1a;
   font-size: 1.3rem;
   line-height: 1.7;
 `

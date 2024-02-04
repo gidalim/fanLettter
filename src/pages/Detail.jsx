@@ -78,7 +78,15 @@ export default Detail
 
 
 const StBtn = styled.button`
+
   margin: 15px;
+  padding: 6px 12px;
+  width: 90px;
+  border-radius: 5px;
+  border: transparent;
+  background-image: linear-gradient(to right, skyblue, #fcb9fc) ;
+  color: white;
+  line-height: 1;
 `
 
 const StModalDiv = styled.div`

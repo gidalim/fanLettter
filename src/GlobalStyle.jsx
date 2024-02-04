@@ -128,12 +128,20 @@ table {
   border-spacing: 0;
 }
 
+@font-face {
+  font-family: 'NPSfontBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 
 textarea{
     resize: none;
   }
 
   body{
+    font-family: 'NPSfontBold';
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -141,6 +149,9 @@ textarea{
     box-sizing: border-box;
   }
   
+
+
+
 
 `
 
