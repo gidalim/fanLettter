@@ -11,7 +11,6 @@ function DetailComment({
   editContent,
 }) {
 
-  console.log('모달컴포넌트에서 잘 받는지 확인중', editContent);
   const dispatch = useDispatch()
 
   const editHandler = (e) => {

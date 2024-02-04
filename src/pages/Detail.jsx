@@ -19,7 +19,6 @@ function Detail() {
 
   const openModalHandler = () => {
     dispatch(openModal(letter.content));
-    console.log(letter.content)
   };
 
   const changedHandler = () => {
