@@ -3,9 +3,6 @@ import initialData from "../../data.json";
 const ADD_FAN_LETTERS = "fanLetters/addFanLetters";
 const DELETE_FAN_LETTERS = "fanLetters/deleteFanLetters";
 const UPDATE_FAN_LETTERS = "fanLetters/updateFanLetters";
-const CALL_MODAL = "fanLetters/details/callModals";
-const CLOSE_MODAL = "fanLetters/details/closeModals";
-const SET_EDIT_CONTENTS = "fanLetters/details/setEditContents";
 
 export const addLetter = (letter) => {
   return {
@@ -28,33 +25,8 @@ export const updateLetter = (update) => {
   };
 };
 
-export const callModal = (content) => {
-  return {
-    type: CALL_MODAL,
-    payload: { content, isDivVisible: false },
-  };
-};
-
-export const closeModal = () => {
-  return {
-    type: CLOSE_MODAL,
-    payload: { isDivVisible: true },
-    editContent: "",
-  };
-};
-
-export const setEditContents = (content) => {
-  return {
-    type: SET_EDIT_CONTENTS,
-    payload: content,
-  };
-};
-
 const initialState = {
   fanLetters: initialData,
-  isModalOpen: false,
-  editContent: "",
-  isDivVisible: true,
 };
 
 const ControlFanLetters = (state = initialState, action) => {
@@ -74,25 +46,6 @@ const ControlFanLetters = (state = initialState, action) => {
         fanLetters: state.fanLetters.map((letter) =>
           letter.id === action.payload.id ? action.payload : letter
         ),
-      };
-    case CALL_MODAL:
-      return {
-        ...state,
-        isModalOpen: true,
-        editContent: action.payload.content,
-        isDivVisible: action.payload.isDivVisible,
-      };
-    case CLOSE_MODAL:
-      return {
-        ...state,
-        isModalOpen: false,
-        isDivVisible: action.payload.isDivVisible,
-        editContent: action.payload.editContent,
-      };
-    case SET_EDIT_CONTENTS:
-      return {
-        ...state,
-        editContent: action.payload,
       };
 
     default:

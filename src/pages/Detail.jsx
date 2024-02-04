@@ -3,19 +3,23 @@ import styled from "styled-components";
 import Button from "../component/Button";
 import DetailComment from "../component/comment/DetailComment";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteLetter, updateLetter, callModal, closeModal } from "../shared/redux/modules/ControlFanLetters";
+import { deleteLetter, updateLetter } from "../shared/redux/modules/ControlFanLetters";
+import { openModal, closeModal } from "../shared/redux/modules/ControlModal";
+
 
 function Detail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { fanLetters, isModalOpen, editContent, isDivVisible } = useSelector(state => state.ControlFanLetters);
+  const { fanLetters } = useSelector(state => state.ControlFanLetters);
+  const { isModalOpen, isDivVisible, editContent } = useSelector(state => state.ControlModal);
 
 
   const letter = fanLetters.find(item => item.id === id);
 
-  const callModalHandler = () => {
-    dispatch(callModal(letter.content));
+  const openModalHandler = () => {
+    dispatch(openModal(letter.content));
+    console.log(letter.content)
   };
 
   const changedHandler = () => {
@@ -30,7 +34,7 @@ function Detail() {
     navigate('/');
   }
 
-  const goHomeBtn = (e) => {
+  const goHomeBtn = () => {
     dispatch(closeModal());
     navigate('/')
   }
@@ -55,7 +59,7 @@ function Detail() {
           >
             <StP>{letter.content}</StP>
             <Button onClick={deletedHandler} >삭제</Button>
-            <Button onClick={callModalHandler} >수정</Button>
+            <Button onClick={openModalHandler} >수정</Button>
           </StModalDiv>
           <DetailComment
             isModalOpen={isModalOpen}

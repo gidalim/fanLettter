@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import Button from '../Button';
 import { useDispatch } from 'react-redux';
-import { setEditContents } from '../../shared/redux/modules/ControlFanLetters';
+import { setEditContents } from '../../shared/redux/modules/ControlModal';
 
 function DetailComment({
   isModalOpen,
@@ -11,6 +11,7 @@ function DetailComment({
   editContent,
 }) {
 
+  console.log('모달컴포넌트에서 잘 받는지 확인중', editContent);
   const dispatch = useDispatch()
 
   const editHandler = (e) => {
@@ -50,6 +51,7 @@ const StModalBox = styled.div`
 `
 
 const StTextarea = styled.textarea`
+  position: sticky;
   width: 855px;
   height: 290px;
   background-color: #457299;
