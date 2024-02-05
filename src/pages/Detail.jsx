@@ -142,6 +142,7 @@ const StImg = styled.figure`
 
 const StFanDetail = styled.div`
   display: flex;
+  gap : 15px;
   flex-direction: column;
   width: 500px;
   height: 50px;

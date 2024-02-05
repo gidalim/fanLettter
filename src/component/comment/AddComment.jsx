@@ -103,7 +103,13 @@ const StSection = styled.section`
   height: 30px;
   
   input{
+    font-family: inherit;
+    text-align: center;
+    border: transparent;
+    border-radius: 5px;
     width: 300px;
+    height: 25px;
+
   }
   
 `
@@ -126,10 +132,10 @@ const StSectionComment = styled.section`
 
   textarea{
     font-family: inherit;
+    border: transparent;
     width: 400px;
     height: 200px;
     font-size: 1.3rem;
-
     }
   
 
