@@ -5,11 +5,11 @@
 
 ### 메인페이지
 
-> <img src ="./src/assets/thumbNail1.png" width="550px" heigth="300px" title="메인페이지"></img>
+> <img src ="./thumbNail1.png" width="550px" heigth="300px" title="메인페이지"></img>
 >
 > ### 세부 페이지
 >
-> <img src ="./src/assets/thumbNail2.png" width="550px" heigth="300px" title="메인페이지"></img>
+> <img src ="./thumbNail2.png" width="550px" heigth="300px" title="메인페이지"></img>
 
 </details>
 
