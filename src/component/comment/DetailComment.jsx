@@ -21,14 +21,17 @@ function DetailComment({
     dispatch(closeModal());
   }
 
+
   if (!isModalOpen) return null;
 
   return (
     <StModalBox className='modalOverlay'>
       <div className='modalContents'>
         <StTextarea
+          type="text"
           value={editContent}
           onChange={editHandler}
+          placeholder='팬레터 내용을 작성해주세요!'
         >
         </StTextarea>
         <StModalBtn>

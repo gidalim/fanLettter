@@ -2,31 +2,37 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const RenderComment = ({ filteredData }) => {
-  console.log('폼 생성용 데이터가 전송 되었는지', filteredData)
-
   const navigate = useNavigate();
   const getFanLetterId = (item) => {
     navigate(`detail/${item.id}`)
-    console.log(item.id)
   }
 
-  return filteredData.map(item => (
-    <StBox key={item.id}
-      className='innerBox'
-      onClick={() => getFanLetterId(item)}
-    >
-      <StCommentBox className='StCommentBox'>
-        <StImg>
-          <img src={item.profile} alt={item.name} />
-        </StImg>
-        <StProfile>
-          <span>{item.name}</span>
-          <time dateTime={item.time}>{new Date(item.time).toLocaleString()}</time>
-        </StProfile>
-      </StCommentBox>
-      <StP>{item.content}</StP>
-    </StBox >
-  ))
+  if (filteredData && filteredData.length > 0) {
+    return filteredData.map(item => (
+      <StBox key={item.id}
+        className='innerBox'
+        onClick={() => getFanLetterId(item)}
+      >
+        <StCommentBox className='StCommentBox'>
+          <StImg>
+            <img src={item.profile} alt={item.name} />
+          </StImg>
+          <StProfile>
+            <span>{item.name}</span>
+            <time dateTime={item.time}>{new Date(item.time).toLocaleString()}</time>
+          </StProfile>
+        </StCommentBox>
+        <StP>{item.content}</StP>
+      </StBox >
+    ))
+  } else {
+    return (
+      <>
+        <div>첫 번째 팬레터를 작성하시겠어요?</div>
+      </>
+    );
+
+  }
 };
 
 export const StCommentBox = styled.section`

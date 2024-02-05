@@ -20,6 +20,11 @@ function Detail() {
   };
 
   const changedHandler = () => {
+    if (editContent.trim() === letter.content.trim()) {
+      alert('이전과 다른 내용이 없어요..!');
+      return;
+    }
+
     const updatedFanLetter = { ...letter, content: editContent }
     dispatch(updateLetter(updatedFanLetter));
     dispatch(closeModal());
@@ -27,8 +32,13 @@ function Detail() {
   }
 
   const deletedHandler = () => {
-    dispatch(deleteLetter(id))
-    navigate('/');
+    const isConfirmed = window.confirm('정말로 삭제하시겠어요?');
+
+
+    if (isConfirmed) {
+      dispatch(deleteLetter(id))
+      navigate('/');
+    }
   }
 
   const goHomeBtn = () => {
