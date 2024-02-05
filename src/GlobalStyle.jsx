@@ -147,6 +147,7 @@ textarea{
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    background-color: #f5eee6;
   }
   
 

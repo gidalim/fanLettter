@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <>
-      <StHeader>
+      <StHeader >
         <StName>
           <div>팬레터 제작하기</div>
           <div>React_4기 박강토</div>
@@ -56,8 +56,8 @@ const StHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 1100px;
-  height: 300px;
-  background-image: url('../assets/bgImg.jpg');
+  height: 150px;
+  background-color: #f5eee6;
   `
 
 const StName = styled.h1`
@@ -65,7 +65,7 @@ const StName = styled.h1`
   width: 80%;
   justify-content: space-between;
   margin-top: 20px;
-  background-color: azure;
+  background-color: #f5eee6;
 `
 const StMember = styled.h1`
   display: flex;

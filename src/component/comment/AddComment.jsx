@@ -114,7 +114,11 @@ const StSectionComment = styled.section`
     width: 400px;
     height: 200px;
     font-size: 1.3rem;
-  }
+
+    }
+  
+
+
 `
 const StLabel = styled.label`
   font-size: 1.2rem;
