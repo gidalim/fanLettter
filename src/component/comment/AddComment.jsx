@@ -70,7 +70,7 @@ function AddComment() {
         <StSection>
           <StLabel>누구에게 보내실 건가요? </StLabel>
           <StSelectArea>
-            <select
+            <StSelector
               value={selectedPage}
               onChange={(e) =>
                 setSelectedPage(e.target.value)}>
@@ -78,7 +78,7 @@ function AddComment() {
               <option value="지젤">지젤</option>
               <option value="윈터">윈터</option>
               <option value="닝닝">닝닝</option>
-            </select>
+            </StSelector>
             <Button onClick={(e) => {
               addButtonHandler(e);
             }}
@@ -92,6 +92,10 @@ function AddComment() {
 
 export default AddComment
 
+
+
+
+
 const StSection = styled.section`
   display: flex;
   align-items: center;
@@ -103,6 +107,17 @@ const StSection = styled.section`
   }
   
 `
+
+
+const StSelector = styled.select`
+  text-align: center;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  width: 90px;
+  color: black;
+`
+
+
 const StSectionComment = styled.section`
   display: flex;
   align-items: center;
